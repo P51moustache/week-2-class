@@ -15,4 +15,19 @@
 -- | 2019 | Houston Astros                | 107       |
 -- | 2004 | St. Louis Cardinals           | 105       |
 
+SELECT 
+    t.year,
+    t.name AS team_name,
+    t.wins
+FROM teams t
+JOIN (
+    SELECT 
+        year, 
+        MAX(wins) AS max_wins
+    FROM teams
+    WHERE year >= 1960
+    GROUP BY year
+) m ON t.year = m.year AND t.wins = m.max_wins
+ORDER BY t.wins DESC, t.year;
+
 

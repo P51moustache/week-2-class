@@ -14,4 +14,9 @@
 -- | 2020 | 30       |
 -- +------+----------+
 
+SELECT year, COUNT(DISTINCT id) AS count
+FROM teams
+GROUP BY year
+ORDER BY year;
+
 
